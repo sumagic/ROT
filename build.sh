@@ -41,4 +41,35 @@ log_error ()
 
 log_info "rot project build start"
 
+PROJECT_DIR=$PWD
+log_info "PROJECT_DIR: ${PROJECT_DIR}"
+
+THIRD_DIR=${PROJECT_DIR}/3rd
+if [ ! -d ${THIRD_DIR} ];then
+    mkdir -p ${THIRD_DIR}
+    log_info "create dir ${THIRD_DIR} success"
+fi
+
+# git clone https://github.com/gflags/gflags.git
+GFLAGS_DIR=${THIRD_DIR}/gflags
+if [ ! -d ${GFLAGS_DIR} ];then
+    cd ${THIRD_DIR}
+    git clone https://github.com/gflags/gflags.git
+fi
+cd ${GFLAGS_DIR}
+git submodule update --init
+
+# git clone https://github.com/google/glog.git
+GLOG_DIR=${THIRD_DIR}/glog
+if [ ! -d ${GLOG_DIR} ];then
+    cd ${THIRD_DIR}
+    git clone https://github.com/google/glog.git
+fi
+cd ${GLOG_DIR}
+git submodule update --init
+
+
+
+
+
 
