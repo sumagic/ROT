@@ -1,4 +1,4 @@
-# <center>ROT</center>
+# <div align=center> ROT</div>
 
 ## 0. 工程说明
 
